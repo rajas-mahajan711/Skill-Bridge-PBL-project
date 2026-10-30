@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBridge — Student Skill & Placement Portal (Quick Launch)</title>
+  <link rel="icon" type="image/svg+xml" href="./frontend/public/favicon.svg" />
+  <style>
+    :root {
+      --primary: #2563EB;
+      --navy: #172554;
+      --dark: #0F172A;
+      --light-bg: #F5F8FC;
+      --border: #E2E8F0;
+      --text: #1E293B;
+      --muted: #64748B;
+      --success: #15803D;
+      --warning: #D97706;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    button, .btn {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .featured-heading {
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 820px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0F172A 0%, #172554 100%);
+      color: white;
+      padding: 36px 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      background: #2563EB;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+      font-size: 26px;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .title span {
+      color: #60A5FA;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #94A3B8;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .content {
+      padding: 32px;
+    }
+
+    .grid-status {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .status-card {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .status-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .status-value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .indicator.online { background: #10B981; }
+    .indicator.ready { background: #2563EB; }
+    .indicator.waiting { background: #F59E0B; }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+      border: none;
+    }
+
+    .btn-primary {
+      background: #2563EB;
+      color: white;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+      flex: 1 1 240px;
+    }
+
+    .btn-primary:hover {
+      background: #1D4ED8;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-secondary {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+      flex: 1 1 240px;
+    }
+
+    .btn-secondary:hover {
+      background: #DBEAFE;
+    }
+
+    .notice-box {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 12px;
+      color: #1E3A8A;
+      line-height: 1.6;
+    }
+
+    .notice-box strong {
+      color: #172554;
+    }
+
+    .quick-steps {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    .quick-steps h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+
+    .step-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      list-style: none;
+    }
+
+    .step-item {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 12px;
+    }
+
+    .step-num {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #2563EB;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 20px;
+      margin-bottom: 8px;
+    }
+
+    .step-title {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      color: var(--muted);
+      line-height: 1.4;
+      font-size: 11px;
+    }
+
+    code {
+      background: #E2E8F0;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      font-size: 11px;
+      color: #0F172A;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 18px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--muted);
+      background: #FAFAFA;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo-badge">🎓</div>
+      <h1 class="title">Skill<span>Bridge</span></h1>
+      <p class="subtitle">AI-Powered Skill Intelligence and Placement Platform — Student Module (Person 2)</p>
+    </div>
+
+    <div class="content">
+      <!-- Live Server / Environment Status -->
+      <div class="grid-status">
+        <div class="status-card">
+          <span class="status-label">Frontend Engine</span>
+          <span class="status-value">
+            <span class="indicator online"></span>
+            React 18 + Vite
+          </span>
+        </div>
+        <div class="status-card">
+          <span class="status-label">Design & Styling</span>
+          <span class="status-value">
+            <span class="indicator ready"></span>
+            Tailwind Blue Theme
+          </span>
+        </div>
+        <div class="status-card">
+          <span class="status-label">Student Session</span>
+          <span class="status-value">
+            <span class="indicator ready"></span>
+            Demo Ready (Aamrapali More)
+          </span>
+        </div>
+      </div>
+
+      <!-- Informational Notice -->
+      <div class="notice-box">
+        <strong>⚡ Live Server & VS Code Running Guide:</strong><br>
+        You can launch the complete student interface directly through your preferred workflow below. For full hot-module reloading and automatic browser opening, run <code>npm start</code> in VS Code (or press <code>Ctrl+Shift+B</code>). You can also open the compiled static portal directly through Live Server.
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-row">
+        <a id="btn-vite" href="http://localhost:5173" class="btn btn-primary">
+          <span>🚀 Launch Live Student Portal</span>
+        </a>
+        <a id="btn-dist" href="./frontend/dist/index.html" class="btn btn-secondary">
+          <span>📂 Open Standalone Build in Live Server</span>
+        </a>
+      </div>
+
+      <!-- Quick Steps -->
+      <div class="quick-steps">
+        <h4>Simple VS Code Execution Options</h4>
+        <ul class="step-list">
+          <li class="step-item">
+            <span class="step-num">1</span>
+            <div class="step-title">Zero-Port 1-Click Task</div>
+            <div class="step-desc">
+              In VS Code, press <code>Ctrl + Shift + B</code> or choose <strong>Terminal &rarr; Run Build Task</strong>. Vite boots and automatically opens your browser without typing any port number!
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">2</span>
+            <div class="step-title">Direct Terminal Command</div>
+            <div class="step-desc">
+              Open the integrated terminal in VS Code and type <code>npm start</code>. It starts the frontend and immediately launches your browser.
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">3</span>
+            <div class="step-title">Live Server Direct View</div>
+            <div class="step-desc">
+              Click the secondary button above to view the compiled standalone portal directly through VS Code Live Server without running background daemons.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      SkillBridge Placement Intelligence &bull; Person 2: Student Dashboard & Skill Development &bull; PBL 2026
+    </div>
+  </div>
+
+  <script>
+    // Lightweight auto-detector for active Vite server
+    (function checkViteServer() {
+      const img = new Image();
+      img.onload = function() {
+        const btn = document.getElementById('btn-vite');
+        if (btn) {
+          btn.innerHTML = '<span>⚡ Enter Active Student Portal (Connected) &rarr;</span>';
+          btn.style.background = '#15803D';
+        }
+      };
+      img.src = 'http://localhost:5173/favicon.svg?' + Date.now();
+    })();
+  </script>
+</body>
+</html>

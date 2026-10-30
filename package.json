@@ -1,0 +1,25 @@
+{
+  "name": "skillbridge",
+  "version": "1.0.0",
+  "description": "SkillBridge - AI-Powered Skill Intelligence and Placement Platform (Student Module - Person 2)",
+  "scripts": {
+    "start": "npm --prefix frontend run dev",
+    "dev": "npm --prefix frontend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build": "npm --prefix frontend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "test": "npm --prefix frontend run test",
+    "test:frontend": "npm --prefix frontend run test",
+    "test:backend": "npm --prefix backend run test",
+    "seed:backend": "npm --prefix backend run seed"
+  },
+  "keywords": [
+    "skillbridge",
+    "skill-intelligence",
+    "placement-platform",
+    "student-module"
+  ],
+  "author": "SkillBridge Team (Person 2 - Student Module)",
+  "license": "ISC"
+}
