@@ -4,6 +4,7 @@
  */
 import { config } from './config/index.js';
 import { setupAdminRoutes } from './routes/adminRoutes.js';
+import { setupAIRoutes } from './routes/aiRoutes.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 class Router {
@@ -93,6 +94,9 @@ export class App {
 
     // Attach Admin Routes (Person 5 scope)
     setupAdminRoutes(prefixedRouter);
+
+    // Attach AI Proxy Routes (Person 3 integration)
+    setupAIRoutes(prefixedRouter);
   }
 
   async handleRequest(req, res) {
