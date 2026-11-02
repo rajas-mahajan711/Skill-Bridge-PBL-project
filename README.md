@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SkillBridge — AI-Powered Student Skill Intelligence & Placement Platform
 
 > **Five Coordinated Workstreams • Shared Architecture • Integration-Ready Modules**  
@@ -128,3 +129,6 @@ The API gateway enforces role permissions on the backend. For testing and demons
 2. **Consent-Based Student Discovery**: Recruiters can only access candidates who have explicitly opted-in (`consentGiven: true`).
 3. **No Sensitive Attributes in Ranking**: Ranking and fit algorithms reject sensitive attributes (gender, race, age, religion).
 4. **Transparent Connector Status**: Any external integration without verified production credentials is explicitly labelled as `DEMO SANDBOX`.
+=======
+
+>>>>>>> e5d4a564b2bb50514bebf9083ac45d3eefedd161
